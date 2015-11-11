@@ -27,6 +27,11 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html'
+  })
+
   .state('app.home', {
     url: '/home',
     views: {
