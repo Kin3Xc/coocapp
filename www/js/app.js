@@ -27,11 +27,15 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-  .state('login', {
-      url: '/login',
-      templateUrl: 'templates/login.html'
+  .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
+      }
+    }
   })
-
   .state('app.home', {
     url: '/home',
     views: {
@@ -43,5 +47,5 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/login');
 });

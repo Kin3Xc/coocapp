@@ -51,3 +51,6 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 app.controller('HomeCtrl', function($scope) {
 
 });// fin HomeCtrl
+app.controller('LoginCtrl', function($scope) {
+
+});// fin HomeCtrl
