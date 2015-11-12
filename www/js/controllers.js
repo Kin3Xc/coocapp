@@ -34,17 +34,33 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	$scope.verMapa = function(){
 		$location.url("/mapa");
 	};
+	$scope.verlistAlumno = function(){
+		$location.url("/listaalumnos");
+	};
 })
 
 .factory('mapa', function(){
 	service = {};
 
 	service.render = function(lat, long){
+		var point1 = new google.maps.LatLng(4.666331, -74.125977);
+		var point2 = new google.maps.LatLng(4.666277, -74.120199);
+		var point3 = new google.maps.LatLng(4.658499, -74.115711);
+		// set the origin and destination
+		var org = new google.maps.LatLng ( 4.666359, -74.133825);
+		var finalCo = new google.maps.LatLng(4.668102, -74.103561);
+
+		var wps = [{ location: point1 }, { location: point2 }, {location: point3}];
+
 		var location = new google.maps.LatLng(lat, long);
 		var option = {
 			zoom: 14,
 			center: location,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
+			// origin: org,
+			// destination: dest,
+			// waypoints: wps,
+			// travelMode: google.maps.DirectionsTravelMode.DRIVING
 		};
 
 		directionsDisplay = new google.maps.DirectionsRenderer();
@@ -84,4 +100,19 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 		// error
 		console.log('Error: ' + err);
 	});
+}])
+//Controlador para octener la pocision actual del usuario
+.controller('listAlumCtrl', [ '$scope', '$cordovaGeolocation', 'mapa', function($scope,$http){
+	$scope.alumnos=[];
+
+	$scope.getAlumnos = function() {
+		$http.get('http://jsonplaceholder.typicode.com/users')
+		.success(function(data) {
+			$scope.alumnos = data;
+		})
+		.error(function() {
+			alert("Not working");
+		})
+
+	};
 }]);

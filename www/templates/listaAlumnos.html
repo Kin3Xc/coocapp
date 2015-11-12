@@ -1,0 +1,15 @@
+<ion-view>
+  <ion-header-bar class="bar-dark">
+	<h1 class="title title-center" >Alumnos</h1>
+  </ion-header-bar>
+  <ion-content ng-init="getAlumnos()">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="alumno in alumnos" type="item-text-wrap" href="">
+        <img ng-src="{{alumno.name}}">
+        <h2>{{alumno.name}}</h2>
+        <p>{{alumno.address.street}}- {{alumno.address.suite}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

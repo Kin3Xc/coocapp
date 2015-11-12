@@ -36,6 +36,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
     url: '/mapa',
     templateUrl: 'templates/mapa.html',
     controller: 'MapaCtrl'
+  })
+  .state('listaAlumnos', {
+    url: '/listaalumnos',
+    templateUrl: 'templates/listaAlumnos.html',
+    controller: 'listAlumCtrl'
   });
 
   // Mostrar la vista de login por default
