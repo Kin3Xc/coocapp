@@ -89,7 +89,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 //Controlador para octener la pocision actual del usuario
-.controller('MapaCtrl', [ '$scope', '$cordovaGeolocation', 'mapa', function($scope, $cordovaGeolocation, mapa){
+.controller('MapaCtrl',function($scope, $cordovaGeolocation, mapa){
 	$scope.titulo = "Pocisión actual";
 	var posOptions = {timeout: 5000, enableHighAccuracy: true};
 	$scope.lat;
@@ -109,25 +109,40 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 		// error
 		console.log('Error: ' + err);
 	});
-}])
+})
 //Controlador para octener la pocision actual del usuario
-.controller('listAlumCtrl', [ '$scope','$http', '$ionicHistory', '$cordovaGeolocation', 'mapa', function($scope, $http, $ionicHistory){
+.controller('listAlumCtrl',  function($scope, $http, $ionicHistory, $timeout, $ionicLoading){
 	
+	// Setup the loader
+  	$ionicLoading.show({
+	    content: 'Loading',
+	    animation: 'fade-in',
+	    showBackdrop: true,
+	    maxWidth: 200,
+	    showDelay: 0
+	  });
+
 	$scope.myGoBack = function() {
 		$ionicHistory.goBack();
 	};
 
+
+
 	$scope.alumnos=[];
-
-	$scope.getAlumnos = function() {
-		$http.get('http://jsonplaceholder.typicode.com/users')
-		.success(function(data) {
-			console.log(data);
-			$scope.alumnos = data;
-		})
-		.error(function(err) {
-			alert("No hay data para mostrar: " + err);
-		});
-
-	};
-}]);
+	
+	// Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
+	  // $timeout(function () {
+	    
+			// $scope.$apply(function(){
+				$http.get('http://jsonplaceholder.typicode.com/users')
+				.success(function(data) {
+					$ionicLoading.hide();
+					console.log(data);
+					$scope.alumnos = data;
+				})
+				.error(function(err) {
+					alert("No hay data para mostrar: " + err);
+				});
+			// });
+	  // }, 2000);
+});
