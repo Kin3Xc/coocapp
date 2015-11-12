@@ -1,6 +1,26 @@
-<ion-view cache-view="false" view-title="My Title!">
-<div class="row col col-100">
-	  <ion-content class="center" ng-controller="HomeCtrl">
-	  </ion-content>
-  </div>
+<ion-view >
+	<div class="row col col-100">
+		<ion-content class="center" ng-controller="HomeCtrl">
+			<img  class="Home-logo"src="img\logo\logoctl.png" alt="" />
+			<div class="Home">
+				<div class="item-Home" ng-click="verMapa()">
+					<p><i class="icon ion-location"></i></p>
+					<p>Mi Ruta</p>
+				</div>
+				<div class="item-Home" ng-click="">
+					<p><i class="icon ion-android-contacts"></i></p>
+					<p>Alumnos</p>
+				</div>
+				<div class="item-Home" ng-click="">
+					<p><i class="icon ion-android-chat"></i></p>
+					<p>Noticicaiones</p>
+				</div>
+				<div class="item-Home" ng-click="">
+					<p><i class="icon ion-android-bus"></i></p>
+					<p>Estado Ruta</p>
+				</div>
+
+			</div>
+		</ion-content>
+	</div>
 </ion-view>

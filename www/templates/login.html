@@ -1,27 +1,27 @@
 
 <ion-view cache-view="false" view-title="Coocapp" align-title="center">
-<div class="row col col-100">
-	  <ion-content class="center" ng-controller="LoginCtrl">
+	<div class="row col col-100">
+		<ion-content class="center" ng-controller="LoginCtrl">
 			<!-----start-main---->
-	 	 <div class="main">
-	 		<div class="login-form">
-	 			<h1>Coocapp Login</h1>
-	 					<div class="head">
-	 						<img src="img/user.png" alt=""/>
-	 					</div>
-	 				<form>
-	 						<input type="text" class="text" value="Usuario" onfocus="this.value = '';" placeholder="Usuario" >
-	 						<input type="password" value="Password" onfocus="this.value = '';" placeholder="Password">
-	 						<div class="submit">
-	 							<input type="submit" onclick="myFunction()" value="LOGIN" >
-	 					</div>
-	 					<p><a href="#">Forgot Password ?</a></p>
-	 				</form>
-	 			</div>
-	 			<!--//End-login-form-->
+			<div class="main">
+				<div class="login-form">
+					<h1>Coocapp Login</h1>
+					<div class="head">
+						<img src="img/user.png" alt=""/>
+					</div>
+					<form>
+						<input type="text" class="text" value="Usuario" onfocus="this.value = '';" placeholder="Usuario" >
+						<input type="password" value="Password" onfocus="this.value = '';" placeholder="Password">
+						<div class="submit">
+							<input type="submit" ng-click="verHome()" value="LOGIN" >
+						</div>
+						<p><a href="#">Forgot Password ?</a></p>
+					</form>
+				</div>
+				<!--//End-login-form-->
 				<div><img src="" alt=""></div>
-	 		</div>
-	 			 <!-----//end-main---->
-	  </ion-content>
-  </div>
+			</div>
+			<!-----//end-main---->
+		</ion-content>
+	</div>
 </ion-view>

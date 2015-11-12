@@ -36,6 +36,15 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
       }
     }
   })
+  .state('app.mapa', {
+    url: '/mapa',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/mapa.html',
+        controller: 'MapCtrl'
+      }
+    }
+  })
   .state('app.home', {
     url: '/home',
     views: {
