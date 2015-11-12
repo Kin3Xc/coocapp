@@ -9,10 +9,10 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 app.controller('HomeCtrl', function($scope, $state) {
    $scope.verMapa = function(){
       $state.go('app.mapa');
-   }
-   $scope.verAlumno = function(){
+   };
+   $scope.verlistAlumno = function(){
       $state.go('app.listalumno');
-   }
+   };
 
 });// fin HomeCtrl
 app.controller('LoginCtrl', function($scope, $state) {
