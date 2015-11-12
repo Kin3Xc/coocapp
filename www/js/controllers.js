@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
-.controller('loginController',function($scope, $location){
+.controller('LoginCtrl',function($scope, $location){
 
 	//Defino el modelo a utilizar, en este caso un sensillo login
 	//con los datos de usuario y clave

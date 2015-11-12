@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
   .state('login',{ //Nombre del estado
     url: '/login', //URL para navegar al estado
     templateUrl: 'templates/login.html', //vista HTML
-    controller: 'loginController' //Controllador
+    controller: 'LoginCtrl' //Controllador
   })
   .state('Home',{ //Nombre del estado
     url: '/home', //URL para navegar al estado
