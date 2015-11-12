@@ -1,8 +1,11 @@
-<ion-view view-title="Mapa Ruta">
-  <div class="row col col-100">
-    <ion-content ng-controller="MapCtrl">
-      <div id="map" data-tap-disabled="true"></div>
-    </ion-content>
-  </div>
-  <script src="https://maps-api-ssl.google.com/maps/api/js?libraries=places"></script>
+<ion-view>
+
+  <ion-header-bar class="bar-dark">
+	<h1 class="title title-center" >Mi ruta</h1>
+  </ion-header-bar>
+  <ion-content ng-controller="MapaCtrl">
+    	<div style="margin-top:5px; margin:0; text-align:center;" class="list">
+        <div  id="map"></div>
+    	</div>
+  </ion-content>
 </ion-view>

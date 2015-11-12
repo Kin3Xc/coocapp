@@ -1,64 +1,87 @@
-// modulo para de la app para crear los controladores
-var app = angular.module('coocapp.controllers', ['ngCordova']);
-// CONTROLADORES DE LA APP
-app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+angular.module('starter.controllers', ['ionic', 'ngCordova'])
+.controller('loginController',function($scope, $location){
 
-});
+	//Defino el modelo a utilizar, en este caso un sensillo login
+	//con los datos de usuario y clave
+	$scope.login = {
+		usuario: '',
+		clave: ''
+	};
 
-// controlador para la vista home, encargada de recoger el código del restaurante
-app.controller('HomeCtrl', function($scope, $state) {
-   $scope.verMapa = function(){
-      $state.go('app.mapa');
-   };
-   $scope.verlistAlumno = function(){
-      $state.go('app.listalumno');
-   };
+	//Funcion para ingresar, se ejecuta al hacer clic sobre el boton Ingresar
+	$scope.ingresar = function(){
+		//Aquí validaria los datos que ingresa el usuario
+		if ($scope.login.usuario != "" && $scope.login.clave != "") {
+			if ($scope.login.usuario === "root") {
+				if ($scope.login.clave === "root") {
+					// alert('Bienvenido al sistema');
+					$location.url("/home");
+				}else{
+					alert('Su clave es incorrecta\nPor favor vuelva a intentarlo');
+					$scope.login.clave = "";
+				}
+			}else{
+				alert('El usuario ingresado no existe\nPor favor vuelva a intentarlo');
+				$scope.login.usuario = "";
+			}
+		}else{
+			alert('Existen campos vacios, por favor verifique\nIngrese todos los datos.');
+		}
+	};
+})
+.controller('HomeCtrl',function($scope, $location){
 
-});// fin HomeCtrl
-app.controller('LoginCtrl', function($scope, $state) {
-   $scope.verHome = function(){
-      $state.go('app.home');
-   }
+	$scope.verMapa = function(){
+		$location.url("/mapa");
+	};
+})
 
-});// fin LoginCtrl
-app.controller('listAlumnoCtrl', function($scope, $state) {
+.factory('mapa', function(){
+	service = {};
 
-});// fin AlumnoCtrl
-app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading) {
+	service.render = function(lat, long){
+		var location = new google.maps.LatLng(lat, long);
+		var option = {
+			zoom: 14,
+			center: location,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
 
-   document.addEventListener("deviceready", onDeviceReady, false);
+		directionsDisplay = new google.maps.DirectionsRenderer();
 
-   function onDeviceReady() {
+		map = new google.maps.Map(document.getElementById('map'), option);
 
-      $ionicLoading.show({
-         template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
-      });
+		directionsDisplay.setMap(map);
 
-      var posOptions = {
-         enableHighAccuracy: true,
-         timeout: 20000,
-         maximumAge: 0
-      };
-      $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-         var lat  = position.coords.latitude;
-         var long = position.coords.longitude;
+		marker = new google.maps.Marker({
+			map: map,
+			position: location,
+			title: 'Mi ubicación'
+		});
 
-         var myLatlng = new google.maps.LatLng(lat, long);
+	}
+	return service;
+})
 
-         var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-         };
+//Controlador para octener la pocision actual del usuario
+.controller('MapaCtrl', [ '$scope', '$cordovaGeolocation', 'mapa', function($scope, $cordovaGeolocation, mapa){
+	$scope.titulo = "Pocisión actual";
+	var posOptions = {timeout: 5000, enableHighAccuracy: true};
+	$scope.lat;
+	$scope.long;
+	$cordovaGeolocation
+	.getCurrentPosition(posOptions)
+	.then(function(position) {
+		var lat  = position.coords.latitude
+		var long = position.coords.longitude
 
-         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		mapa.render(lat, long);
 
-         $scope.map = map;
-         $ionicLoading.hide();
+		$scope.lat = lat;
+		$scope.long = long;
 
-      }, function(err) {
-         $ionicLoading.hide();
-         console.log(err);
-      });
-   }
-});
+	}, function(err) {
+		// error
+		console.log('Error: ' + err);
+	});
+}]);

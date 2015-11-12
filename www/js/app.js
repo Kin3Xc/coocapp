@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,52 +18,26 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+  .state('login',{ //Nombre del estado
+    url: '/login', //URL para navegar al estado
+    templateUrl: 'templates/login.html', //vista HTML
+    controller: 'loginController' //Controllador
   })
-  .state('app.login', {
-    url: '/login',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
-      }
-    }
+  .state('Home',{ //Nombre del estado
+    url: '/home', //URL para navegar al estado
+    templateUrl: 'templates/home.html', //vista HTML
+    controller: 'HomeCtrl' //Controllador
   })
-  .state('app.mapa', {
+
+  .state('mapa', {
     url: '/mapa',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/mapa.html',
-        controller: 'MapCtrl'
-      }
-    }
-  })
-  .state('app.listalumno', {
-    url: '/listalumno',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/listaAlumnos.html',
-        controller: 'listAlumnoCtrl'
-      }
-    }
-  })
-  .state('app.home', {
-    url: '/home',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
-      }
-    }
+    templateUrl: 'templates/mapa.html',
+    controller: 'MapaCtrl'
   });
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  // Mostrar la vista de login por default
+  $urlRouterProvider.otherwise('/login');
 });
