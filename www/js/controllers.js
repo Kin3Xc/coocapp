@@ -10,6 +10,9 @@ app.controller('HomeCtrl', function($scope, $state) {
    $scope.verMapa = function(){
       $state.go('app.mapa');
    }
+   $scope.verAlumno = function(){
+      $state.go('app.listalumno');
+   }
 
 });// fin HomeCtrl
 app.controller('LoginCtrl', function($scope, $state) {
@@ -17,7 +20,10 @@ app.controller('LoginCtrl', function($scope, $state) {
       $state.go('app.home');
    }
 
-});// fin HomeCtrl
+});// fin LoginCtrl
+app.controller('listAlumnoCtrl', function($scope, $state) {
+
+});// fin AlumnoCtrl
 app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading) {
 
    document.addEventListener("deviceready", onDeviceReady, false);

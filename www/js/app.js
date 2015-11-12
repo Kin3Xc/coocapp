@@ -45,6 +45,15 @@ angular.module('coocapp', ['ionic', 'ngCordova', 'coocapp.controllers', 'coocapp
       }
     }
   })
+  .state('app.listalumno', {
+    url: '/listalumno',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/listaAlumnos.html',
+        controller: 'listAlumnoCtrl'
+      }
+    }
+  })
   .state('app.home', {
     url: '/home',
     views: {
