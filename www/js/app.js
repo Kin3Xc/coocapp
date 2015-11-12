@@ -37,6 +37,22 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers'])
     templateUrl: 'templates/mapa.html',
     controller: 'MapaCtrl'
   })
+
+  .state('notification', {
+    url: '/notification',
+    templateUrl: 'templates/notifications.html'
+  })
+
+  .state('estadoRuta', {
+    url: '/estadoRuta',
+    templateUrl: 'templates/estadoRuta.html'
+  })
+
+  .state('resumenRuta', {
+    url: '/resumenRuta',
+    templateUrl: 'templates/resumenRuta.html'
+  })
+
   .state('listaAlumnos', {
     url: '/listaalumnos',
     templateUrl: 'templates/listaAlumnos.html',

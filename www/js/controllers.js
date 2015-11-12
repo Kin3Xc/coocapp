@@ -37,6 +37,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	$scope.verlistAlumno = function(){
 		$location.url("/listaalumnos");
 	};
+	$scope.verNotification = function(){
+		$location.url('/notification');
+	};
+	$scope.verEstadoRuta = function(){
+		$location.url('/estadoRuta');
+	};
 	$scope.myGoBack = function() {
 		$ionicHistory.goBack();
 	};
@@ -116,11 +122,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	$scope.getAlumnos = function() {
 		$http.get('http://jsonplaceholder.typicode.com/users')
 		.success(function(data) {
+			console.log(data);
 			$scope.alumnos = data;
 		})
-		.error(function() {
-			alert("Not working");
-		})
+		.error(function(err) {
+			alert("No hay data para mostrar: " + err);
+		});
 
 	};
 }]);

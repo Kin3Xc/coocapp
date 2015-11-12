@@ -17,6 +17,12 @@ body{
 	width: 50%;
 
 }
+
+.estado{
+	padding: 4px;
+	background-color: orange;
+	color: #FFF;
+}
 h1 {
     color: #fff;
     text-shadow: 0 1px 0px #000;
