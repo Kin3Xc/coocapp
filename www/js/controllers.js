@@ -29,13 +29,16 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 		}
 	};
 })
-.controller('HomeCtrl',function($scope, $location){
+.controller('HomeCtrl',function($scope,$location,$ionicHistory){
 
 	$scope.verMapa = function(){
 		$location.url("/mapa");
 	};
 	$scope.verlistAlumno = function(){
 		$location.url("/listaalumnos");
+	};
+	$scope.myGoBack = function() {
+		$ionicHistory.goBack();
 	};
 })
 
@@ -102,7 +105,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	});
 }])
 //Controlador para octener la pocision actual del usuario
-.controller('listAlumCtrl', [ '$scope', '$cordovaGeolocation', 'mapa', function($scope,$http){
+.controller('listAlumCtrl', [ '$scope','$http', '$ionicHistory', '$cordovaGeolocation', 'mapa', function($scope, $http, $ionicHistory){
+	
+	$scope.myGoBack = function() {
+		$ionicHistory.goBack();
+	};
+
 	$scope.alumnos=[];
 
 	$scope.getAlumnos = function() {
