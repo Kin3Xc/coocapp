@@ -127,22 +127,56 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	};
 
 
+	// $http.get('http://jsonplaceholder.typicode.com/users')
+	// 	.success(function(data) {
+	// 		$ionicLoading.hide();
+	// 		console.log(data);
+	// 		$scope.alumnos = data;
+	// 	})
+	// 	.error(function(err) {
+	// 		alert("No hay data para mostrar: " + err);
+	// 	});
 
-	$scope.alumnos=[];
+
+	// $scope.alumnos=[];
 	
+
 	// Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
-	  // $timeout(function () {
+	  $timeout(function () {
 	    
-			// $scope.$apply(function(){
-				$http.get('http://jsonplaceholder.typicode.com/users')
-				.success(function(data) {
-					$ionicLoading.hide();
-					console.log(data);
-					$scope.alumnos = data;
-				})
-				.error(function(err) {
-					alert("No hay data para mostrar: " + err);
-				});
-			// });
-	  // }, 2000);
+			$scope.$apply(function(){
+				$scope.alumnos = [
+					{
+						name: 'Pepito Perez',
+						address: 'Calle 1 # 11 - 21',
+						state: 'Activo'
+					},
+
+					{
+						name: 'Juan Castelanos',
+						address: 'Calle 1 # 11 - 21',
+						state: 'Activo'
+					},
+
+					{
+						name: 'Pedro Martinez',
+						address: 'Calle 1 # 11 - 21',
+						state: 'Activo'
+					},
+
+					{
+						name: 'Alexander Acosta',
+						address: 'Calle 1 # 11 - 21',
+						state: 'Activo'
+					},
+
+					{
+						name: 'Manuel Perez',
+						address: 'Calle 1 # 11 - 21',
+						state: 'Activo'
+					}
+				];
+			});
+			 $ionicLoading.hide();
+	  }, 2000);
 });
